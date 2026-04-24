@@ -36,35 +36,40 @@ El proyecto implementa Clean Architecture con 3 capas:
 ### Pasos
 
 1. Clonar repositorio
+
 ```bash
-git clone <tu-repo>
-cd e-commerce-chat-ai
+git clone https://github.com/SaraEcheGom/E_Commers_Taller_1.git
+cd E_Commers_Taller_1
 ```
 
 2. Crear entorno virtual
+
 ```bash
 python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate
 ```
 
 3. Instalar dependencias
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Configurar variables de entorno
+
 ```bash
 cp .env.example .env
 # Editar .env y agregar tu GEMINI_API_KEY
 ```
 
 5. Ejecutar localmente
+
 ```bash
 uvicorn src.infrastructure.api.main:app --reload --port 8001
 ```
 
 6. Ejecutar con Docker
+
 ```bash
 docker-compose up --build
 ```
@@ -76,6 +81,7 @@ docker-compose up --build
 | Local | http://localhost:8001 |
 | Docker | http://localhost:8080 |
 | Documentación | http://localhost:8001/docs |
+| Frontend | http://localhost:8001/frontend |
 
 ## Endpoints
 
@@ -88,10 +94,12 @@ docker-compose up --build
 | POST | `/chat` | Envía mensaje al chat con IA |
 | GET | `/chat/history/{session_id}` | Obtiene historial de sesión |
 | DELETE | `/chat/history/{session_id}` | Elimina historial de sesión |
+| GET | `/frontend` | Frontend de Stephora |
 
 ## Ejemplo de Chat
 
 **Request:**
+
 ```json
 POST /chat
 {
@@ -101,6 +109,7 @@ POST /chat
 ```
 
 **Response:**
+
 ```json
 {
   "session_id": "usuario123",
@@ -118,6 +127,7 @@ pytest tests/ -v
 
 ## Estructura del Proyecto
 
+```
 e-commerce-chat-ai/
 ├── src/
 │   ├── domain/          # Entidades y reglas de negocio
@@ -125,11 +135,13 @@ e-commerce-chat-ai/
 │   └── infrastructure/  # API, base de datos y servicios externos
 ├── tests/               # Tests unitarios
 ├── data/                # Base de datos SQLite
+├── index.html           # Frontend Stephora
+├── logo.jpeg            # Logo
 ├── Dockerfile
 ├── docker-compose.yml
-├── index.html           # Frontend
-├── logo.jpeg            # Logo
 └── README.md
+```
 
 ## Autor
-Sara Echeverri Gómez
+
+Sara Echeverri Gómez — Universidad EAFIT
